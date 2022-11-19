@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/sg/public/';
+    public $baseURL = 'https://agendapoggers.herokuapp.com/public/';
 
     /**
      * --------------------------------------------------------------------------
