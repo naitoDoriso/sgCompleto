@@ -33,7 +33,7 @@ class Connection extends BaseConnection
      *
      * @var string
      */
-    public $schema = 'public';
+    public $schema = 'dan3ltllqbntj';
 
     /**
      * Identifier escape character
