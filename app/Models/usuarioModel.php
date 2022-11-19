@@ -6,16 +6,16 @@ use CodeIgniter\Model;
 
 class usuarioModel extends Model
 {
-    protected $table            = 'USUARIO';
-    protected $primaryKey       = 'LOGIN';
+    protected $table            = 'usuario';
+    protected $primaryKey       = 'login';
 
-    protected $allowedFields    = ['LOGIN', 'SENHA'];
+    protected $allowedFields    = ['login', 'senha'];
     protected $returnType       = 'object';
 
     public function verificarLogin($login, $senha)
     {
-        return $this->where('LOGIN', $login)
-                    ->where('SENHA', $senha)
+        return $this->where('login', $login)
+                    ->where('senha', $senha)
                     ->get()
                     ->getResult();
     }
