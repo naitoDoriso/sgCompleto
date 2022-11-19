@@ -31,7 +31,7 @@ class Database extends Config
      * @var array
      */
     public $default = [
-        'DSN'      => 'Postgre://dsuhlffqcvdtpb:be0268092f0bf2d8a7ca9af5590c49a11d19a56a3f3d786a9029388022deb93e@ec2-44-207-253-50.compute-1.amazonaws.com:5432/dan3ltllqbntj',
+        'DSN'      => 'postgres://dsuhlffqcvdtpb:be0268092f0bf2d8a7ca9af5590c49a11d19a56a3f3d786a9029388022deb93e@ec2-44-207-253-50.compute-1.amazonaws.com:5432/dan3ltllqbntj',
         'hostname' => 'ec2-44-207-253-50.compute-1.amazonaws.com',
         'username' => 'dsuhlffqcvdtpb',
         'password' => 'be0268092f0bf2d8a7ca9af5590c49a11d19a56a3f3d786a9029388022deb93e',
