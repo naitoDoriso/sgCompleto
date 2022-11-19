@@ -58,7 +58,7 @@ class Validation extends BaseConfig
     ];
 
     public $login_cadastro = [
-        'LOGIN' => 'required|is_unique[usuario.LOGIN]|max_length[250]',
+        'LOGIN' => 'required|is_unique[usuario.login]|max_length[250]',
         'SENHA' => 'required|max_length[30]'
     ];
 
