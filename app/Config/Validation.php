@@ -58,14 +58,13 @@ class Validation extends BaseConfig
     ];
 
     public $login_cadastro = [
-        'login' => 'required|is_unique[usuario.login]|max_length[250]',
+        'login' => 'required|max_length[250]',
         'senha' => 'required|max_length[30]'
     ];
 
     public $login_cadastro_errors = [
         'login' => [
             'required' => 'O campo USERNAME está em branco',
-            'is_unique' => 'O USERNAME inserido já está cadastrado',
             'max_length' => 'O campo USERNAME excedeu o limite de caracteres'
         ],
         'senha' => [

@@ -40,6 +40,7 @@ class Login extends BaseController
         {
             $encrypted = $this->criptografar($this->request->getPost('SENHA'));
 
+            print_r($this->request->getVar());
             $dados = [
                 'login' => $this->request->getVar('LOGIN'),
                 'senha' => $encrypted
