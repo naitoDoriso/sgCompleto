@@ -41,36 +41,4 @@ class Validation extends BaseConfig
     //--------------------------------------------------------------------
     // Rules
     //--------------------------------------------------------------------
-    public $login = [
-        'LOGIN' => 'required|max_length[250]',
-        'SENHA' => 'required|max_length[30]'
-    ];
-
-    public $login_errors = [
-        'LOGIN' => [
-            'required' => 'O campo USERNAME está em branco',
-            'max_length' => 'O campo USERNAME excedeu o limite de caracteres'
-        ],
-        'SENHA' => [
-            'required' => 'O campo SENHA está em branco',
-            'max_length' => 'O campo SENHA excedeu o limite de caracteres'
-        ]
-    ];
-
-    public $login_cadastro = [
-        'LOGIN' => 'required|is_unique[USUARIO.LOGIN]|max_length[250]',
-        'SENHA' => 'required|max_length[30]'
-    ];
-
-    public $login_cadastro_errors = [
-        'LOGIN' => [
-            'required' => 'O campo USERNAME está em branco',
-            'is_unique' => 'O USERNAME inserido já está cadastrado',
-            'max_length' => 'O campo USERNAME excedeu o limite de caracteres'
-        ],
-        'SENHA' => [
-            'required' => 'O campo SENHA está em branco',
-            'max_length' => 'O campo SENHA excedeu o limite de caracteres'
-        ]
-    ];
 }
