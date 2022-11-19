@@ -401,7 +401,7 @@ class Connection extends BaseConnection
         $column = func_num_args() > 1 ? func_get_arg(1) : null;
 
         if ($table === null && $v >= '8.1') {
-            $sql = 'SELECT "" AS ins_id';
+            $sql = 'SELECT 1 AS ins_id';
         } elseif ($table !== null) {
             if ($column !== null && $v >= '8.0') {
                 $sql   = "SELECT pg_get_serial_sequence('{$table}', '{$column}') AS seq";
