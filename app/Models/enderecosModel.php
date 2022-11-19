@@ -6,9 +6,9 @@ use CodeIgniter\Model;
 
 class enderecosModel extends Model
 {
-    protected $table         = 'ENDERECOS';
-    protected $primaryKey    = 'ID_ENDERECO';
+    protected $table         = 'enderecos';
+    protected $primaryKey    = 'id_endereco';
 
-    protected $allowedFields = ['ID_ENDERECO', 'RUA', 'NUMERO', 'BAIRRO', 'CIDADE', 'CEP'];
+    protected $allowedFields = ['id_endereco', 'rua', 'numero', 'bairro', 'cidade', 'cep'];
     protected $returnType    = 'object';
 }

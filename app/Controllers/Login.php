@@ -41,8 +41,8 @@ class Login extends BaseController
             $encrypted = $this->criptografar($this->request->getPost('SENHA'));
 
             $dados = [
-                'LOGIN' => $this->request->getVar('LOGIN'),
-                'SENHA' => $encrypted
+                'login' => $this->request->getVar('LOGIN'),
+                'senha' => $encrypted
             ];
 
             $validation = \Config\Services::validation();
@@ -52,10 +52,10 @@ class Login extends BaseController
 
             $usuarioModel = new \App\Models\usuarioModel();
 
-            if (sizeof( $usuarioModel->verificarLogin($dados['LOGIN'], $dados['SENHA'])) > 0)
+            if (sizeof( $usuarioModel->verificarLogin($dados['login'], $dados['senha'])) > 0)
             {
                 $session = \Config\Services::session();
-                $session->set('logged', $usuarioModel->verificarLogin($dados['LOGIN'], $dados['SENHA'])[0]);
+                $session->set('logged', $usuarioModel->verificarLogin($dados['login'], $dados['senha'])[0]);
                 return redirect()->to('contatos');
             } else {
                 $msg = sizeof($validation->getErrors()) < 1 ? '<p class="alert alert-danger">*Login/Senha incorretos!</p>' : $msg;

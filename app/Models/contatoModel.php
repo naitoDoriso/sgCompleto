@@ -6,18 +6,18 @@ use CodeIgniter\Model;
 
 class contatoModel extends Model
 {
-    protected $table         = 'CONTATO';
-    protected $primaryKey    = 'ID_CONTATO';
+    protected $table         = 'contato';
+    protected $primaryKey    = 'id_contato';
 
-    protected $allowedFields = ['ID_CONTATO', 'NOME', 'DATA_NASC', 'LOGIN', 'IMAGEM'];
+    protected $allowedFields = ['id_contato', 'nome', 'data_nasc', 'login', 'imagem'];
     protected $returnType    = 'object';
 
     public function infoEnderecos($id)
     {
         $db = db_connect();
-        return $db->table('CONTATO_ENDERECO')
-                  ->where(['ID_CONTATO' => $id])
-                  ->join('ENDERECOS', 'ENDERECOS.ID_ENDERECO = CONTATO_ENDERECO.ID_ENDERECO')
+        return $db->table('contato_endereco')
+                  ->where(['id_contato' => $id])
+                  ->join('enderecos', 'enderecos.id_endereco = contato_endereco.id_endereco')
                   ->get()
                   ->getResult();
         $db->close();
@@ -26,9 +26,9 @@ class contatoModel extends Model
     public function infoTelefones($id)
     {
         $db = db_connect();
-        return $db->table('TELEFONES')
-                  ->orderBy('ID_CONTATO')
-                  ->where(['ID_CONTATO' => $id])
+        return $db->table('telefones')
+                  ->orderBy('id_contato')
+                  ->where(['id_contato' => $id])
                   ->get()
                   ->getResult();
         $db->close();
@@ -37,9 +37,9 @@ class contatoModel extends Model
     public function infoEmails($id)
     {
         $db = db_connect();
-        return $db->table('EMAILS')
-                  ->orderBy('ID_CONTATO', 'DESC')
-                  ->where(['ID_CONTATO' => $id])
+        return $db->table('emails')
+                  ->orderBy('id_contato', 'desc')
+                  ->where(['id_contato' => $id])
                   ->get()
                   ->getResult();
         $db->close();
@@ -47,18 +47,18 @@ class contatoModel extends Model
 
     public function insertEmail($dados)
     {
-        $table = db_connect()->table('EMAILS');
+        $table = db_connect()->table('emails');
 
-        $dados['ID_CONTATO'] = $this->find()[sizeof($this->find())-1]->ID_CONTATO;
+        $dados['id_contato'] = $this->find()[sizeof($this->find())-1]->id_contato;
         return $table->insert($dados);
     }
 
     public function insertContEnd()
     {
-        $table = db_connect()->table('CONTATO_ENDERECO');
+        $table = db_connect()->table('contato_endereco');
         $db = db_connect();
-        $enderecoModel = $db->table('ENDERECOS');
-        $contatoModel = $db->table('CONTATO');
+        $enderecoModel = $db->table('enderecos');
+        $contatoModel = $db->table('contato');
 
         $dados = [
             'ID_ENDERECO' => $enderecoModel->get()->getResult()[sizeof($enderecoModel->get()->getResult())-1]->ID_ENDERECO,
@@ -71,24 +71,24 @@ class contatoModel extends Model
 
     public function insertTelefone($dados)
     {
-        $table = db_connect()->table('TELEFONES');
+        $table = db_connect()->table('telefones');
 
-        $dados['ID_CONTATO'] = $this->find()[sizeof($this->find())-1]->ID_CONTATO;
+        $dados['id_contato'] = $this->find()[sizeof($this->find())-1]->id_contato;
         return $table->insert($dados);
     }
 
     public function deleteEndereco($id_contato)
     {
         $db = db_connect();
-        $endereco = $db->table('ENDERECOS');
-        $contEnd = $db->table('CONTATO_ENDERECO');
+        $endereco = $db->table('enderecos');
+        $contEnd = $db->table('contato_endereco');
 
-        $rows = $contEnd->where('ID_CONTATO', $id_contato)
+        $rows = $contEnd->where('id_contato', $id_contato)
                 ->get()
                 ->getResult();
         
         foreach ($rows as $row) {
-            $endereco->where('ID_ENDERECO', $row->ID_ENDERECO)
+            $endereco->where('id_endereco', $row->id_endereco)
                      ->delete();
         }
 
@@ -112,17 +112,17 @@ class contatoModel extends Model
     {
         $db = db_connect();
         $contato = $this;
-        $emails = $db->table('EMAILS');
-        $telefones = $db->table('TELEFONES');
-        $enderecos = $db->table('ENDERECOS');
-        $id_end = $db->table('CONTATO_ENDERECO')->where('ID_CONTATO', $id)->orderBy('ID_CONTATO')->get()->getResult();
-        $id_email = $emails->where('ID_CONTATO', $id)->orderBy('ID_CONTATO')->get()->getResult();
-        $id_tel = $telefones->where('ID_CONTATO', $id)->orderBy('ID_CONTATO')->get()->getResult();
+        $emails = $db->table('emails');
+        $telefones = $db->table('telefones');
+        $enderecos = $db->table('enderecos');
+        $id_end = $db->table('contato_endereco')->where('id_contato', $id)->orderBy('id_contato')->get()->getResult();
+        $id_email = $emails->where('id_contato', $id)->orderBy('id_contato')->get()->getResult();
+        $id_tel = $telefones->where('id_contato', $id)->orderBy('id_contato')->get()->getResult();
 
         $dataCON = [
-            'NOME' => $data_edit["NOME"],
-            'DATA_NASC' => $data_edit["DATA_NASC"],
-            'LOGIN' => $data_edit["LOGIN"]
+            'nome' => $data_edit["nome"],
+            'data_nasc' => $data_edit["data_nasc"],
+            'login' => $data_edit["login"]
         ];
 
         $dataEMAILS = [];
