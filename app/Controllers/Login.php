@@ -40,7 +40,6 @@ class Login extends BaseController
         {
             $encrypted = $this->criptografar($this->request->getPost('SENHA'));
 
-            print_r($this->request->getVar());
             $dados = [
                 'login' => $this->request->getVar('LOGIN'),
                 'senha' => $encrypted
@@ -104,8 +103,8 @@ class Login extends BaseController
         $encrypted = $this->criptografar($senha);
 
         $dadosUsuario = [
-            'LOGIN' => $this->request->getPost('LOGIN'),
-            'SENHA' => $encrypted
+            'login' => $this->request->getPost('LOGIN'),
+            'senha' => $encrypted
         ];
 
         $validation = \Config\Services::validation();
